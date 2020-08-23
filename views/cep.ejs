@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta CEP</title>
+  </head>
+
+  <body>
+    <form action="/" method="get">
+      <label for="cep">CEP:</label>
+      <input type="text" id="cep" name="cep">
+      <button type="submit">Consultar CEP</button>
+    </form>
+    <% if (cep) { %>
+    <div>
+      <p>UF: <%= cep.uf %></p>
+      <p>Cidade: <%= cep.cidade %></p>
+      <p>Bairro: <%= cep.bairro %></p>
+      <p>Logradouro: <%= cep.logradouro %></p>
+    </div>
+    <% } %>
+    <% if (message) { %>
+    <h1><%= message %></h1>
+    <% } %>
+  </body>
+
+</html>

@@ -8,7 +8,10 @@ const api = axios.create({
 module.exports = async (cep) => {
   try {
     const response = await api.get(encodeURIComponent(cep));
-    return response.data;
+    const data = await response.data;
+    if (Array.isArray(data) && data.length === 0)
+      throw new Error('CEP não encontrado');
+    return data;
   } catch (error) {
     return error;
   }

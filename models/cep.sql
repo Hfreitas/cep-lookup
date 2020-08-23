@@ -1,3 +1,5 @@
+-- Criando Banco de dados de cache
+
 CREATE DATABASE IF NOT EXISTS cep_lookup;
 use cep_lookup;
 CREATE TABLE ceps (
