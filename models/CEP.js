@@ -44,12 +44,15 @@ const findCEP = async (cep) => {
 
 module.exports = async (cep) => {
   if (!validateCEP(cep)) throw new Error('CEP inválido');
+  try {
+    const cepData = await findCEP(cep);
 
-  const cepData = await findCEP(cep);
+    if (cepData) return cepData;
 
-  if (cepData) return cepData;
-
-  const data = await cepAPI(cep);
-  await saveCEP(data);
-  return data;
+    const data = await cepAPI(cep);
+    await saveCEP(data);
+    return data;
+  } catch (error) {
+    return error;
+  }
 };
